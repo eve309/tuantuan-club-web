@@ -1,0 +1,174 @@
+/* ============================================================
+   社团一站通 · Light Glass 美化皮肤
+   叠加在 workbuddy 原版样式之上：
+   只改 颜色 / 玻璃质感 / 字体 / 光效 / 圆角观感
+   不改任何 DOM 结构、布局尺寸、交互逻辑
+   ============================================================ */
+
+:root{
+  --brand:#2e6bff;
+  --brand-deep:#6a4dff;
+  --brand-soft:#eaf1ff;
+  --ink:#101c3d;
+  --muted:#5b6890;
+  --line:#e2e9f8;
+  --grad:linear-gradient(135deg,#00b8e6,#2e6bff 52%,#7a5cff);
+  --grad-soft:linear-gradient(135deg,rgba(0,184,230,.10),rgba(46,107,255,.10) 50%,rgba(122,92,255,.12));
+  --glass:rgba(255,255,255,.72);
+  --glass-line:rgba(255,255,255,.92);
+  --shadow:0 10px 30px rgba(46,88,255,.10);
+  --shadow-lg:0 24px 70px rgba(46,88,255,.16);
+}
+
+/* ---------- 全局底色与字体 ---------- */
+body{
+  background:
+    radial-gradient(900px 520px at 88% -8%, rgba(0,184,230,.14), transparent 62%),
+    radial-gradient(820px 560px at -10% 12%, rgba(122,92,255,.13), transparent 60%),
+    radial-gradient(700px 500px at 55% 118%, rgba(255,143,177,.12), transparent 60%),
+    linear-gradient(180deg,#f7faff,#f2f5ff);
+  background-attachment:fixed;
+  font-family:"HarmonyOS Sans SC","PingFang SC","MiSans","Microsoft YaHei UI","Microsoft YaHei","Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+}
+
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:rgba(46,107,255,.28);border-radius:8px;border:2px solid transparent;background-clip:content-box}
+::-webkit-scrollbar-track{background:transparent}
+
+/* ---------- 顶栏 ---------- */
+.topbar{
+  background:rgba(255,255,255,.72)!important;
+  backdrop-filter:blur(22px) saturate(1.4);
+  -webkit-backdrop-filter:blur(22px) saturate(1.4);
+  border-bottom:1px solid rgba(255,255,255,.85)!important;
+  box-shadow:0 8px 30px rgba(46,88,255,.08)!important;
+}
+.topbar.scrolled{box-shadow:0 10px 34px rgba(46,88,255,.15)!important}
+.brand-txt{
+  background:var(--grad);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  font-weight:800;letter-spacing:.5px;
+}
+.brand-face{box-shadow:0 4px 14px rgba(46,107,255,.28),0 0 0 2px rgba(255,255,255,.9) inset!important}
+
+/* 导航 Tab：下划线式 → 流光胶囊（布局不变，仅观感） */
+.tab{padding:10px 16px;margin:0 3px;border-radius:999px;border-bottom:0;color:var(--muted);font-weight:500;transition:.25s}
+.tab:hover{background:rgba(46,107,255,.08);color:var(--brand)}
+.tab.active{
+  background:var(--grad);color:#fff!important;font-weight:700;
+  border-bottom-color:transparent!important;
+  box-shadow:0 8px 20px rgba(46,107,255,.35);
+}
+.tab.crown{color:#a06a16}
+.tab.crown.active{
+  background:linear-gradient(135deg,#f7b733,#e5a83b);
+  color:#fff!important;border-bottom-color:transparent!important;
+  box-shadow:0 8px 20px rgba(229,168,59,.4);
+}
+
+/* ---------- 玻璃卡片体系（原类名，只换表面） ---------- */
+.club,.me-card,.ev-card,.panel,.cat,.hot-item,.sch-item,.fp-card,.modal,
+.searchbar,.stat3,.gov-kpi,.gov-kb-card,.score-card,.ticket,.review,
+.wb-table,.gov-table,.detail-grid{
+  background:var(--glass)!important;
+  backdrop-filter:blur(18px) saturate(1.35);
+  -webkit-backdrop-filter:blur(18px) saturate(1.35);
+  border:1px solid var(--glass-line)!important;
+  box-shadow:var(--shadow)!important;
+}
+.club:hover,.ev-card:hover,.me-q:hover,.cat:hover,.fp-card:hover,.gov-kb-card:hover{
+  box-shadow:0 18px 44px rgba(46,88,255,.16)!important;
+}
+
+/* ---------- Hero 区（个人中心 / 活动头 / 治理头） ---------- */
+.me-hero,.ev-hero,.gov-hero,.list-hero,.wb-hero{
+  background:var(--grad-soft)!important;
+  border:1px solid rgba(255,255,255,.9)!important;
+  box-shadow:var(--shadow)!important;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+
+/* ---------- 主按钮：流光渐变 ---------- */
+.btn-main,.tt-submit,.tt-btn-go,.ev-btn.primary,.modal-ok,
+.wb-btn:not(.ghost),.gov-btn:not(.ghost){
+  background:var(--grad)!important;color:#fff!important;border:none!important;
+  box-shadow:0 8px 20px rgba(46,107,255,.32)!important;transition:.25s;
+}
+.btn-main:hover,.tt-submit:hover,.tt-btn-go:hover,.ev-btn.primary:hover,
+.wb-btn:not(.ghost):hover,.gov-btn:not(.ghost):hover{
+  filter:brightness(1.08);transform:translateY(-1px);
+  box-shadow:0 12px 26px rgba(46,107,255,.42)!important;
+}
+.tt-btn-go:disabled{background:rgba(110,130,220,.35)!important;box-shadow:none!important}
+
+/* ---------- 徽章 / 类型标 ---------- */
+.me-role-tag,.club-badge,.ev-type,.act-pill,.gov-pill,.eh-badge,.ball-badge{
+  background:var(--grad)!important;color:#fff!important;border:none!important;
+}
+.me-role-tag.leader{background:linear-gradient(135deg,#12b981,#00b8e6)!important}
+.rec-why,.me-trait,.fp-tag,.club-tag,.rec-chip,.gov-tag{border-radius:999px}
+
+/* ---------- 日历选中 ---------- */
+.cal-d.sel{
+  background:var(--grad)!important;color:#fff!important;
+  border-color:transparent!important;
+  box-shadow:0 8px 18px rgba(46,107,255,.35)!important;
+}
+
+/* ---------- 积分 / KPI 数字流光化 ---------- */
+.me-score-txt .num,.gov-kpi .gk-num{
+  background:var(--grad);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* ---------- 横幅：换晴空配色 ---------- */
+.banner{--sky1:#8ec9ff;--sky2:#e9e6ff;border-radius:18px!important;box-shadow:0 22px 55px rgba(46,88,255,.16)!important}
+
+/* ---------- 登录门面 ---------- */
+.tt-gate{
+  background:
+    radial-gradient(900px 520px at 85% -10%, rgba(0,184,230,.16), transparent 60%),
+    radial-gradient(800px 560px at -8% 15%, rgba(122,92,255,.15), transparent 60%),
+    radial-gradient(700px 480px at 60% 115%, rgba(255,143,177,.13), transparent 60%),
+    linear-gradient(180deg,#f7faff,#eef2ff)!important;
+}
+.tt-card{
+  background:rgba(255,255,255,.82)!important;
+  backdrop-filter:blur(24px) saturate(1.3);
+  -webkit-backdrop-filter:blur(24px) saturate(1.3);
+  box-shadow:0 30px 80px rgba(46,88,255,.16)!important;
+}
+.tt-submit{box-shadow:0 10px 24px rgba(46,107,255,.35)!important}
+.tt-acc:hover{border-color:rgba(46,107,255,.5)!important;box-shadow:0 10px 24px rgba(46,88,255,.14)!important;transform:translateY(-1px)}
+.tt-acc-go{background:var(--grad)!important}
+
+/* ---------- 搜索条 ---------- */
+.searchbar{
+  border-radius:999px!important;
+  box-shadow:0 10px 26px rgba(46,88,255,.08)!important;
+}
+
+/* ---------- AI 助手 ---------- */
+.ai-ball{filter:drop-shadow(0 12px 26px rgba(46,88,255,.4))}
+.me-ai-card{background:var(--grad-soft)!important;border:1px solid rgba(0,184,230,.3)!important}
+
+/* ---------- 治理看板面板 ---------- */
+.gov-side,.gov-sec,.wb-layout,.wb-main{color:var(--ink)}
+.gov-kb-card.published{border-left:3px solid #12b981!important}
+.gov-kb-card.rejected{border-left:3px solid #ff6f7d!important}
+
+/* ---------- 页脚说明弱化 ---------- */
+.design-note{opacity:.5;font-size:11px;text-align:center}
+
+/* ---------- 窄屏微调（不涉及布局结构） ---------- */
+@media (max-width:768px){
+  .topbar{backdrop-filter:blur(16px) saturate(1.3)}
+}
+
+/* ---------- 配图注入层配套 ---------- */
+.club-cover{background-size:cover!important;background-position:center!important}
+.club-cover .club-code{background:rgba(10,22,52,.42)!important;color:#fff!important;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.35)!important}
+.ev-thumb{background-size:cover!important;background-position:center!important}
+.ev-thumb svg,.hot-thumb svg,.act-thumb svg,.fp-thumb svg,.me-club-cover svg,.club-avatar svg{display:none!important}
+.hot-thumb,.act-thumb,.fp-thumb,.me-club-cover,.club-avatar,.club-hero{background-size:cover!important;background-position:center!important}
