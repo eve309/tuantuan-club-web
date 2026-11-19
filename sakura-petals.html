@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>团团智能体 · 春日樱花主题</title>
+<link rel="stylesheet" href="sakura-theme.css">
+<style>
+/* ===== 演示页专用布局（不影响主题包本身） ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+.gate-wrap{min-height:100vh;display:grid;place-items:center;padding:40px 20px}
+.gate-card{position:relative;width:min(460px,100%);padding:36px 38px 28px}
+.gate-card::before{border-radius:inherit}
+.gate-eyebrow{font-size:12px;letter-spacing:2px;color:var(--sk-pink-3);font-weight:700;text-align:center}
+.gate-h1{font-size:26px;text-align:center;margin:10px 0 6px;font-weight:800;color:var(--sk-text-primary)}
+.gate-lead{text-align:center;font-size:13px;color:var(--sk-text-secondary);margin-bottom:24px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;color:var(--sk-text-secondary);margin-bottom:6px;font-weight:500}
+.control{position:relative;display:flex;align-items:center}
+.control input{width:100%;padding:12px 14px;font-size:14px}
+.hint{font-size:12px;color:var(--sk-text-light);margin:2px 0 16px;text-align:center}
+.btn-login{width:100%;padding:13px;border:none;cursor:pointer;font-size:15px;letter-spacing:4px}
+.gate-foot{font-size:11px;color:var(--sk-text-light);text-align:center;margin-top:16px}
+.gate-meta{display:flex;justify-content:center;gap:16px;font-size:11px;color:var(--sk-text-light);margin:12px 0 18px;padding-top:12px;border-top:1px dashed var(--sk-card-border)}
+.gate-meta b{color:var(--sk-blue-3)}
+.acc-title{font-size:12.5px;font-weight:700;color:var(--sk-text-secondary);margin:2px 0 10px}
+.acc{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:12px 15px;border-radius:14px;border:1px solid var(--sk-input-border);background:var(--sk-input-bg);cursor:pointer;margin-bottom:8px;font-family:var(--sk-font);text-align:left;transition:.25s var(--sk-ease)}
+.acc:hover{border-color:var(--sk-input-focus-border);box-shadow:0 6px 18px rgba(240,175,195,.15);transform:translateY(-1px)}
+.acc-main b{display:block;font-size:13px;color:var(--sk-text-primary)}
+.acc-main small{font-size:11px;color:var(--sk-text-light)}
+.acc-go{font-size:12px;font-weight:700;color:#fff;background:var(--grad,linear-gradient(135deg,var(--sk-pink-2),var(--sk-pink-1)));padding:6px 14px;border-radius:999px;flex:none}
+.chat-demo{max-width:640px;margin:40px auto 60px;padding:0 20px}
+.chat-demo h2{font-size:16px;color:var(--sk-text-primary);margin-bottom:16px;text-align:center}
+.msg{padding:14px 18px;margin-bottom:12px;max-width:85%}
+.msg.bot{border-bottom-left-radius:6px}
+.msg.user{margin-left:auto;background:linear-gradient(135deg,rgba(169,214,232,.4),rgba(169,214,232,.25));border-bottom-right-radius:6px}
+.msg .who{font-size:11px;color:var(--sk-text-light);margin-bottom:6px;font-weight:600}
+.msg .txt{font-size:14px;line-height:1.7;color:var(--sk-text-primary)}
+.petals{position:fixed;inset:0;pointer-events:none;z-index:9999}
+</style>
+</head>
+<body>
+
+<!-- 樱花瓣装饰层（仅 6 片，不遮挡任何控件） -->
+<div class="petals" aria-hidden="true">
+  <span class="sakura-petal"></span>
+  <span class="sakura-petal"></span>
+  <span class="sakura-petal"></span>
+  <span class="sakura-petal"></span>
+  <span class="sakura-petal"></span>
+  <span class="sakura-petal"></span>
+</div>
+
+<div class="gate-wrap">
+  <div class="gate-card card">
+    <p class="gate-eyebrow">团团智能体 · 学生登录</p>
+    <h1 class="gate-h1">欢迎回来 🌸</h1>
+    <p class="gate-lead">用学号登录，团团带你找到感兴趣的社团</p>
+    <form onsubmit="return false">
+      <div class="field">
+        <label>学号</label>
+        <div class="control"><input type="text" placeholder="请输入学号" value="2023110101"></div>
+      </div>
+      <div class="field">
+        <label>密码</label>
+        <div class="control"><input type="password" placeholder="请输入密码"></div>
+      </div>
+      <div class="hint">演示环境：初始密码是学号后六位，仅开放 3 个账号</div>
+      <button class="btn-login btn-primary" type="submit">登 录</button>
+    </form>
+    <p class="gate-foot">纯前端演示 · 数据仅保存在本机浏览器</p>
+    <div class="gate-meta"><span><b>67</b> 个社团</span><span><b>26</b> 个兴趣标签</span><span><b>3</b> 个演示身份</span></div>
+    <div class="acc-title">演示账号 · 点一下直接登录</div>
+    <button class="acc"><span class="acc-main"><b>普通成员 2023110101</b><small>社团广场 · 社团活动 · 个人中心</small></span><span class="acc-go">一键登录</span></button>
+    <button class="acc"><span class="acc-main"><b>社团骨干 20240002</b><small>额外解锁「快捷工作台」</small></span><span class="acc-go">一键登录</span></button>
+    <button class="acc"><span class="acc-main"><b>校团委管理员 20240003</b><small>再解锁「治理看板」</small></span><span class="acc-go">一键登录</span></button>
+  </div>
+
+  <!-- 聊天演示 -->
+  <div class="chat-demo">
+    <h2>团团对话演示</h2>
+    <div class="msg bot card">
+      <div class="who">团团 🌱</div>
+      <div class="txt">你好呀！我是团团，你的社团推荐助手 🌸 想找什么类型的社团？告诉我你的兴趣，我来帮你匹配～</div>
+    </div>
+    <div class="msg user card">
+      <div class="who">你</div>
+      <div class="txt">我喜欢摄影和音乐，有没有推荐的？</div>
+    </div>
+    <div class="msg bot card">
+      <div class="who">团团 🌱</div>
+      <div class="txt">找到 3 个超匹配的社团！<br>📷 摄影协会 — 主题外拍 + 胶片漂流<br>🎵 制音工厂 — 乐队排练 + 音乐制作<br>🎬 浪潮电影社 — 经典展映 + 短片创作<br>要不要帮你报名其中一个？</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
